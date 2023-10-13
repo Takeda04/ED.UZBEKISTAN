@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useState, useEffect, useRef } from "react";
 
 //Import Styled Component
 
@@ -41,10 +41,11 @@ const Header = () => {
     setMenu(null);
   };
 
+
   return (
     <Paper
       sx={{ backgroundImage: "none" }}
-      className="bg-transparent shadow-none w-full rounded-none border-b-2 bg-white px-[10em]"
+      className={`bg-transparent shadow-none w-full rounded-none border-b-2 bg-white px-[10em] sticky top-0`}
     >
       <HtmlHeader className="justify-between">
         <Link to={"/"} className="inline-flex items-center gap-1">
@@ -110,8 +111,8 @@ const Header = () => {
           >
             <Avatar
             sx={{
-              width: 60,
-              height: 60
+              width: 45,
+              height: 45
             }}
               alt="Ava"
               src="../../assets/images/me.jpeg"
