@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 
 //Import Styled Component
 
@@ -33,7 +33,7 @@ const Header = () => {
   const [menu, setMenu] = useState(null);
   const open = Boolean(menu);
   const noma = true
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setMenu(event.currentTarget);
   };
 
