@@ -1,34 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Suspense, lazy } from "react";
+import { useStateContext } from "./context/ContextProvider";
+import { Backdrop, CircularProgress } from "@mui/material";
+import { Route, Routes } from "react-router-dom";
+import { routes } from "./router";
+import { v4 } from "uuid";
+const Layout = lazy(() => import("./layouts/Layout"));
+const Private = lazy(() => import("./private/Private"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { setCurrentMode, currentMode } = useStateContext();
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Suspense
+      fallback={
+        <Backdrop
+          sx={{
+            backgroundColor: "#fff",
+            color: "blue",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
+          open={true}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      }
+    >
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* Routes */}
+        {routes?.map(({ path, Component }) => (
+          <Route
+            path={path}
+            element={
+              <Private>
+                <Layout>
+                  <Component />
+                </Layout>
+              </Private>
+            }
+            key={v4()}
+          />
+        ))}
+      </Routes>
+    </Suspense>
+  );
 }
 
-export default App
+export default App;
