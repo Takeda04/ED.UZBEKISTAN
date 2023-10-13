@@ -61,12 +61,12 @@ export interface INew {
 
 const News = () => {
   return (
-    <main className='flex flex-col py-2 gap-2 rounded-lg mt-10'>
+    <main className='flex flex-col py-2 gap-2 rounded-lg my-10'>
       <Container>
         <h2 className='text-4xl'>News</h2>
         <ul className='grid grid-cols-1 min-[480px]:grid-cols-2 gap-8 md:grid-cols-3 xl:grid-cols-4 mt-10'>
           {news_list?.map((item, i) => (
-            <li className='hover:[&>div>button>div>img]:scale-125 flex'>
+            <li className='flex'>
               <NewsCard item={item} key={i} />
             </li>
           ))}
