@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from "react";
+import React, { MouseEvent, useState, useEffect, useRef } from "react";
 
 //Import Styled Component
 
@@ -30,10 +30,10 @@ import { news_list } from "../../pages/News";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [menu, setMenu] = useState(null);
+  const [menu, setMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(menu);
-  const noma = true
-  const handleClick = (event: any) => {
+  
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setMenu(event.currentTarget);
   };
 
@@ -41,10 +41,11 @@ const Header = () => {
     setMenu(null);
   };
 
+
   return (
     <Paper
       sx={{ backgroundImage: "none" }}
-      className="bg-transparent shadow-none w-full rounded-none border-b-2 bg-white px-[10em]"
+      className={`bg-transparent shadow-none w-full rounded-none border-b-2 bg-white px-[10em] sticky top-0`}
     >
       <HtmlHeader className="justify-between">
         <Link to={"/"} className="inline-flex items-center gap-1">
@@ -109,49 +110,25 @@ const Header = () => {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
-            sx={{
-              width: 60,
-              height: 60
-            }}
+              sx={{
+                width: 45,
+                height: 45
+              }}
               alt="Ava"
               src="../../assets/images/me.jpeg"
               className="border-2"
             />
           </IconButton>
           <Menu
+            id="basic-menu"
             anchorEl={menu}
-            id="account-menu"
             open={open}
             onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&:before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
             }}
-            transformOrigin={{ horizontal: "right", vertical: "top" }}
-            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
             <MenuItem onClick={handleClose}>
               <Link to="/profile">
@@ -162,23 +139,18 @@ const Header = () => {
               </Link>
             </MenuItem>
             <MenuItem onClick={handleClose}>
-             <Link to="/settings">
-             <ListItemIcon>
-                <MdSettings />
-              </ListItemIcon>
-              Sozlamalar
-             </Link>
+              <Link to="/settings">
+                <ListItemIcon>
+                  <MdSettings />
+                </ListItemIcon>
+                Sozlamalar
+              </Link>
             </MenuItem>
-            <MenuItem
-              onClick={() => {
-                localStorage.clear();
-                window.location.reload();
-              }}
-            >
-              <ListItemIcon>
-                <BiLogOut />
-              </ListItemIcon>
-              Chiqish
+            <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <BiLogOut />
+                </ListItemIcon>
+                Chiqish
             </MenuItem>
           </Menu>
         </Section>

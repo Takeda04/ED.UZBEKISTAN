@@ -28,13 +28,14 @@ export default function Login() {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get("password")
-
     try {
-     
-    } catch (error) {
-      // toastError(error.message);
-      event.preventDefault(false);
+      
 
+    } catch (error) {
+      if(error instanceof Error) {
+        toastError(error.message);
+        event.preventDefault(false);
+      }
     }
   };
 
