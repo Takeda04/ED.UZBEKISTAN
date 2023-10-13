@@ -18,12 +18,15 @@ const truncatedText = (str: string, from: number, to: number) => {
 
 const NewsCard: React.FC<NewsCardProps> = ({ item }) => {
   return (
-    <Card className='lg:max-w-[265px] flex flex-col'>
+    <Card className='lg:max-w-[265px] flex flex-col z-0'>
       <CardActionArea className=''>
         <Box className='overflow-hidden transition-all'>
           <CardMedia component='img' height='140' image={item.img} alt={item.title} className='transition-all' />
         </Box>
         <CardContent className=' flex-grow'>
+          <Typography gutterBottom component='span' className='truncate'>
+            {item.category}
+          </Typography>
           <Typography gutterBottom variant='h5' component='div' className='truncate'>
             {item.title}
           </Typography>
