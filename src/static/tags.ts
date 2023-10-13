@@ -29,7 +29,6 @@ export const Form = styled("form")(() => ({
 
 export const Container = styled("div")(() => ({
   maxWidth: "1300px",
-  height: "100vh",
   margin: "0 auto",
   padding: " 0 16px",
 }));
