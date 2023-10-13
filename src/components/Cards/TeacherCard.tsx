@@ -8,10 +8,10 @@ import {
   AiOutlineDislike,
   AiOutlineLike,
 } from "react-icons/ai";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const TeacherCard = ({id}) => {
+const TeacherCard: React.FC<{ id: number }> = ({ id }) => {
   const [{ like, dislike }, setActions] = useState({
     like: false,
     dislike: false,
