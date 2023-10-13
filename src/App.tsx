@@ -4,14 +4,15 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./router";
 import { v4 } from "uuid";
+import Private from "./private/Private";
 const Layout = lazy(() => import("./layouts/Layout"));
-const Private = lazy(() => import("./private/Private"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 
 function App() {
-  const { setCurrentMode, currentMode } = useStateContext();
+  // const { setCurrentMode, currentMode } = useStateContext();
+  
   return (
     <Suspense
       fallback={
@@ -31,7 +32,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        {/* Routes */}
         {routes?.map(({ path, Component }) => (
           <Route
             path={path}

@@ -14,14 +14,14 @@ import {
 } from "@mui/material";
 import { toastError, toastSuccess } from "../toast/toast";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/firebase";
+// import { auth } from "../utils/firebase";
 
 const defaultTheme = createTheme();
 
 export default function Register() {
 
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: HTMLFormElement) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -29,18 +29,9 @@ export default function Register() {
     const password = data.get("password");
 
     try {
-      const request = auth.createUserWithEmailAndPassword(email, password);
-      request;
-      request.then((result) => {
-        let accessToken = result.user.multiFactor.user.accessToken;
-        localStorage.setItem("accessToken", accessToken);
-        toastSuccess("User Signed Up Successfully");
-        navigate("/");
-        console.log(result);
 
-      });
     } catch (error) {
-      toastError(error.message);
+      // toastError(error.message);
       event.preventDefault(false);
       console.log(error)
     }
@@ -74,7 +65,7 @@ export default function Register() {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>

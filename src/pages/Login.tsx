@@ -23,23 +23,16 @@ const defaultTheme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: HTMLFormElement) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
-    const  password= data.get("password")
+    const password = data.get("password")
 
     try {
-      const request = auth.signInWithEmailAndPassword(email, password);
-      request;
-      request.then((result) => {
-        let accessToken = result.user.multiFactor.user.accessToken;
-        localStorage.setItem('accessToken', accessToken);
-        toastSuccess("User Signed In Successfully");
-        navigate('/')
-      });
+     
     } catch (error) {
-      toastError(error.message);
+      // toastError(error.message);
       event.preventDefault(false);
 
     }
@@ -72,7 +65,7 @@ export default function Login() {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >

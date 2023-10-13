@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React, { lazy } from "react";
 
 const Main = lazy(() => import("./pages/Main"));
 const Classes = lazy(() => import("./pages/Classes"));

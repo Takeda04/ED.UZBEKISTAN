@@ -1,9 +1,10 @@
+import React from "react";
 import { Navigate } from "react-router-dom";
 
-const Private = ({ children }) => {
-  const ACCESS_TOKEN = localStorage.getItem("accessToken");
+const Private: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
+  const ACCESS_TOKEN: string | null = localStorage.getItem("accessToken");
   const userRole = localStorage.getItem("userRole");
-  if (ACCESS_TOKEN?.length > 900) {
+  if (ACCESS_TOKEN && ACCESS_TOKEN?.length > 900) {
     // if(userRole === 'student'){
     //   return 
     // }
