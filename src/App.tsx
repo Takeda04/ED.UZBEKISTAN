@@ -12,7 +12,7 @@ const Register = lazy(() => import("./pages/Register"));
 
 function App() {
   // const { setCurrentMode, currentMode } = useStateContext();
-  
+
   return (
     <Suspense
       fallback={

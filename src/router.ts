@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import  { lazy } from "react";
 
 const Main = lazy(() => import("./pages/Main"));
 const Classes = lazy(() => import("./pages/Classes"));
@@ -7,7 +7,8 @@ const Profile = lazy(() => import("./pages/Profile"));
 const Statistics = lazy(() => import("./pages/Statistic"));
 const Students = lazy(() => import("./pages/Students"));
 const Teachers = lazy(() => import("./pages/Teachers"));
-const Settings = lazy(() => import("./pages/Settings.jsx"));
+const Settings = lazy(() => import("./pages/Settings"));
+const ClassComponent = lazy(() => import("./pages/Class"))
 
 export const routes = [
   {
@@ -17,6 +18,10 @@ export const routes = [
   {
     path: "/classes",
     Component: Classes,
+  },
+  {
+    path: "/class/:id", 
+    Component: ClassComponent,
   },
   {
     path: "/news",
