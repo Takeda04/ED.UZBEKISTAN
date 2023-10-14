@@ -40,7 +40,7 @@ const Header = () => {
         <HtmlHeader className='!px-0 justify-between' >
           <Link to={'/'} className='inline-flex items-center gap-1'>
             <h1 className={`text-[1.8em] text-black font-bold`}>
-              Ed<span className='text-blue-500'>ZONE</span>
+              EDU<span className='text-blue-500'>ZONE</span>
             </h1>
           </Link>
           <Section className='flex items-center gap-5'>
