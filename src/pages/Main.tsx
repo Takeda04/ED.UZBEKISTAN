@@ -1,8 +1,11 @@
 import React from 'react'
+import Sidebar from '../components/Sidebar/Sidebar'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <main className='flex items-center justify-between'>
+      <Sidebar/>
+    </main>
   )
 }
 

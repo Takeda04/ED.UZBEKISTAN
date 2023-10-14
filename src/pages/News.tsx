@@ -1,6 +1,6 @@
 import { SetStateAction, useEffect, useState } from 'react';
 import NewsCard from '../components/Cards/NewsCard';
-import { Container } from '../static/tags';
+import { Container, Title } from '../static/tags';
 import { Skeleton } from '@mui/material';
 import { Box } from '@mui/system';
 
@@ -76,7 +76,7 @@ const News = () => {
   return (
     <main className='py-2 gap-2 rounded-lg my-10 w-full'>
       <Container>
-        <h2 className='text-4xl'>News</h2>
+        <Title>News</Title>
         <ul className='grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4 mt-10 mr-2 justify-between'>
           {!loading && news?.map((item, i) => <NewsCard item={item} key={i} />)}
           {loading &&

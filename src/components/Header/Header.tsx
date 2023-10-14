@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 //Import Styled Component
 
@@ -37,10 +37,10 @@ const Header = () => {
       className={`bg-transparent shadow-none w-full rounded-none border-b-2 bg-white sticky top-0 z-[999]`}
     >
       <Container>
-        <HtmlHeader className='!px-0'>
+        <HtmlHeader className='!px-0 justify-between' >
           <Link to={'/'} className='inline-flex items-center gap-1'>
             <h1 className={`text-[1.8em] text-black font-bold`}>
-              Ed<span className='text-blue-500'>Uzbekistan</span>
+              Ed<span className='text-blue-500'>ZONE</span>
             </h1>
           </Link>
           <Section className='flex items-center gap-5'>
@@ -70,10 +70,7 @@ const Header = () => {
               </IconButton>
               <Description>Yangiliklar</Description>
             </Box>
-            <Box
-              className='flex items-center cursor-pointer hover:text-blue-500'
-              onClick={() => navigate('/statistics')}
-            >
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/statistics')}>
               <IconButton color='inherit'>
                 <ImStatsBars />
               </IconButton>
