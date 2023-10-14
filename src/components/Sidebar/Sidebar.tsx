@@ -1,4 +1,3 @@
-import SidebarCard from "../Cards/SidebarCard"
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
@@ -13,6 +12,7 @@ const Sidebar = () => {
   type ISidebarMenu = {
     icon: any;
     title: string;
+    path: string;
   }
 
 
@@ -20,18 +20,22 @@ const Sidebar = () => {
     {
       icon: <BookmarkBorderIcon/>,
       title: "Training",
+      path: 'training',
     },
     {
       icon: <HelpOutlineIcon/>,
-      title: "Quizes"
+      title: "Quizes",
+      path: 'quizes',
     },
     {
       icon: <SignalCellularAltIcon/>,
       title: "Accuracy",
+      path: 'accuracy',
     },
     {
       icon: <NotificationsNoneIcon/>,
       title: "Notifications",
+      path: 'notification',
     }
   ];
 
@@ -46,7 +50,7 @@ const Sidebar = () => {
 
       <Box className="flex flex-col mt-8 h-full ">
         {SidebarMenu.map((item) => (
-          <Link key={item.title} className="flex py-4 px-8 hover:bg-blue-300" to={item.title}>
+          <Link key={item.title} className="flex py-4 px-8 hover:bg-blue-300" to={item.path}>
             {item.icon} <span className="ml-2 font-medium">{item.title}</span>
           </Link>
         ))}

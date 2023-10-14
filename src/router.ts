@@ -10,6 +10,7 @@ const Teachers = lazy(() => import("./pages/Teachers"));
 const Settings = lazy(() => import("./pages/Settings"));
 const ClassComponent = lazy(() => import("./pages/Class"))
 const ProfileRoutes = lazy(() => import("./ProfileRoutes"));
+const Quizes = lazy(() => import("./pages/Quizes"))
 
 export const routes = [
   {
@@ -31,6 +32,10 @@ export const routes = [
   {
     path: "/profile/*",
     Component: ProfileRoutes,
+  },
+   {
+    path: "/profile/quizes",
+    Component: Quizes,
   },
   {
     path: "/statistics",
