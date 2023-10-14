@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { classes } from "../static/data";
-import ClassCard from "../components/Cards/ClassCard";
 import { Box } from "@mui/material";
 import SinfCard from "../components/Cards/SinfCard";
 
