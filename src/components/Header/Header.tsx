@@ -17,6 +17,7 @@ import { FaChalkboardTeacher } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { news_list } from '../../pages/News';
+import { deleteTokens } from '../helpers/userHelper';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +31,12 @@ const Header = () => {
   const handleClose = () => {
     setMenu(null);
   };
+
+  const logout = () => {
+    handleClose();
+    deleteTokens();
+    navigate('/login');
+  }
 
   return (
     <Paper
@@ -121,7 +128,7 @@ const Header = () => {
                   Sozlamalar
                 </Link>
               </MenuItem>
-              <MenuItem onClick={handleClose}>
+              <MenuItem onClick={logout}>
                 <ListItemIcon>
                   <BiLogOut />
                 </ListItemIcon>

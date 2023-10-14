@@ -10,6 +10,7 @@ import { toastError } from "./toast/toast";
 import $host from "./http";
 import { IUserResponse } from "./http/types";
 import { deleteTokens } from "./components/helpers/userHelper";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 
 const Layout = lazy(() => import("./layouts/Layout"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -64,9 +65,10 @@ function App() {
       }
     >
       <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route element={<PublicRoute/>}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         {routes?.map(({ path, Component }) => (
           <Route
             path={path}
@@ -80,6 +82,7 @@ function App() {
             }
           />
         ))}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

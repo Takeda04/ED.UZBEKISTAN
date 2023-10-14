@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { AppContext } from "../context/AppContextProvider";
 
 const Private: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
-  const { appState, setAppState } = useContext(AppContext);
+  const { appState } = useContext(AppContext);
   if(!appState.isAuth) {
     return <Navigate to="/login" replace={true}/>;
   }

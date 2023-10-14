@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import { toastError, toastSuccess } from "../toast/toast";
 import $host from "../http";
 import { ILoginResponse, IUserResponse } from "../http/types";
-import { FormControl } from "@mui/material";
 import { AppContext } from "../context/AppContextProvider";
 
 //firebase
@@ -40,8 +39,8 @@ export default function Login() {
 
       const user = await $host.get<IUserResponse>("/users/me/");
       setAppState({ user: user.data.data, isAuth: true });
-      
       navigate("/");
+      toastSuccess("Successfully signed in!");
     } catch (error) {
       if(error instanceof Error) {
         toastError(error.message);
