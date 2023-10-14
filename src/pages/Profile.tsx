@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Box, TextField, Button, FormControl, InputLabel } from "@mui/material";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -5,16 +6,39 @@ import  Sidebar  from "../components/Sidebar/Sidebar";
 import { Container, Title } from "../static/tags";
 import { DatePicker } from "@mui/x-date-pickers";
 import Textarea from '@mui/joy/Textarea';
+import { toastError } from "../toast/toast";
 
 interface IProfile {
 
 }
 
 const Profile: React.FC<IProfile> = () => {
+  const [regions, setRegions] = useState([]);
+  const [districts, setDistricts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+
+  const fetchRegionsAndDistricts = async () => {
+    try {
+      
+    } catch (error) {
+      if(error instanceof Error) {
+        toastError(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+  
+    
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
+    
   }
+
+  useEffect(() => {
+    fetchRegionsAndDistricts();
+  }, []);
 
 
   return (
@@ -29,15 +53,12 @@ const Profile: React.FC<IProfile> = () => {
           <Box className="flex-1 mr-4">
             <TextField className="w-full" id="outlined-basic" label="First name" variant="outlined" />
             <TextField className="w-full !mt-4" id="outlined-basic" label="Last name" variant="outlined" />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker className="w-full !mt-4"/>
-            </LocalizationProvider>
+            <TextField className="w-full !mt-4" id="outlined-basic" label="Email" variant="outlined" />
           </Box>
           <Box className="flex-1">
             <TextField className="w-full" id="outlined-basic" label="Phone" variant="outlined" type="number"/>
             <TextField className="w-full !mt-4" id="outlined-basic" label="Country" variant="outlined" />
             <TextField className="w-full !mt-4" id="outlined-basic" label="City" variant="outlined" />
-
           </Box>
         </Box>
         <Box className="mt-4">

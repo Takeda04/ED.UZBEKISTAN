@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 //Import Styled Component
 
@@ -14,13 +14,16 @@ import { BiLogOut, BiUser } from 'react-icons/bi';
 import { PiStudentBold, PiNewspaperClippingBold } from 'react-icons/pi';
 import { ImStatsBars } from 'react-icons/im';
 import { FaChalkboardTeacher } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { news_list } from '../../pages/News';
 import { deleteTokens } from '../helpers/userHelper';
+import AppNavLink from '../AppNavLink/AppNavLink';
+import { AppContext } from '../../context/AppContextProvider';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { setAppState } = useContext(AppContext);
   const [menu, setMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(menu);
 
@@ -35,6 +38,7 @@ const Header = () => {
   const logout = () => {
     handleClose();
     deleteTokens();
+    setAppState({ isAuth: false });
     navigate('/login');
   }
 
@@ -51,38 +55,38 @@ const Header = () => {
             </h1>
           </Link>
           <Section className='flex items-center gap-5'>
-            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/classes')}>
+            <AppNavLink to="/classes" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <MdOutlineClass className='text-[1.4rem]' />
               </IconButton>
               <Description>Sinflar</Description>
-            </Box>
-            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/students')}>
+            </AppNavLink>
+            <AppNavLink to="/students" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <PiStudentBold className='text-[1.4rem]' />
               </IconButton>
               <Description>O'quvchilar</Description>
-            </Box>
-            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/teachers')}>
+            </AppNavLink>
+            <AppNavLink to="/teachers" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <FaChalkboardTeacher className='text-[1.4rem]' />
               </IconButton>
               <Description>Ustozlar</Description>
-            </Box>
-            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/news')}>
+            </AppNavLink>
+            <AppNavLink to="/news" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <Badge badgeContent={news_list ? news_list?.length : 0} color='primary'>
                   <PiNewspaperClippingBold className='text-[1.4rem]' />
                 </Badge>
               </IconButton>
               <Description>Yangiliklar</Description>
-            </Box>
-            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/statistics')}>
+            </AppNavLink>
+            <AppNavLink to="/statistics" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <ImStatsBars />
               </IconButton>
               <Description>Statistika</Description>
-            </Box>
+            </AppNavLink>
             <IconButton
               onClick={handleClick}
               size='small'
@@ -113,20 +117,20 @@ const Header = () => {
               }}
             >
               <MenuItem onClick={handleClose}>
-                <Link to='/profile'>
+                <NavLink to='/profile'>
                   <ListItemIcon>
                     <BiUser />
                   </ListItemIcon>
                   Profilim
-                </Link>
+                </NavLink>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to='/settings'>
+                <NavLink to='/settings'>
                   <ListItemIcon>
                     <MdSettings />
                   </ListItemIcon>
                   Sozlamalar
-                </Link>
+                </NavLink>
               </MenuItem>
               <MenuItem onClick={logout}>
                 <ListItemIcon>

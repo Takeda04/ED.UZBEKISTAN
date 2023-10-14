@@ -9,7 +9,7 @@ const Layout: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
   const route = useLocation();
 
   return (
-    <Section>
+    <Section >
       {route.pathname !== '/profile' && (
         <Header/>
       )}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Title } from '../static/tags'
 import HomeCard from '../components/Cards/HomeCard'
+import { Grid } from '@mui/material'
 
 const Main = () => {
   return (
@@ -9,10 +10,12 @@ const Main = () => {
         My courses
       </Title>
 
-      <HomeCard/>
-      <HomeCard/>
-      <HomeCard/>
-      <HomeCard/>
+      <Grid className="!mt-2"  container spacing={2}>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+        <HomeCard/>
+      </Grid>
       
       
     </Container>
