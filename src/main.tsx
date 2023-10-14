@@ -8,12 +8,10 @@ import AppContextProvider from './context/AppContextProvider'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   
-  <React.StrictMode>
-    <AppContextProvider>
-      <BrowserRouter>
-        <Toaster reverseOrder={true}/>
-        <App />
-      </BrowserRouter>
-    </AppContextProvider>
-  </React.StrictMode>,
+  <AppContextProvider>
+    <BrowserRouter>
+      <Toaster reverseOrder={true}/>
+      <App />
+    </BrowserRouter>
+  </AppContextProvider>,
 )

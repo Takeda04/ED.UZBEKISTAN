@@ -8,7 +8,7 @@ export interface IUser {
     image: string | null;
     region: string | null;
     district: string | null;
-    address: string | null
+    address: string | null;
 }
 
 interface IState {
