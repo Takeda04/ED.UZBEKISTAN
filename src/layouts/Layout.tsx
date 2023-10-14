@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
     <Section>
       <Header />
       <Section className='w-full flex flex-col items-center justify-start'>
-        <Box className='flex items-center justify-center'>{children}</Box>
+        <Box className='flex items-center justify-center w-full'>{children}</Box>
       </Section>
     </Section>
   );
