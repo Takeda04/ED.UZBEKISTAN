@@ -9,6 +9,7 @@ import Textarea from '@mui/joy/Textarea';
 import { toastError, toastLoading, toastSuccess } from "../toast/toast";
 import $host from "../http";
 import { AppContext, IUser } from "../context/AppContextProvider";
+import { AxiosError } from "axios";
 
 interface IProfile {
 
@@ -23,7 +24,7 @@ interface IRegionsResponse {
 const Profile: React.FC<IProfile> = () => {
   const [regions, setRegions] = useState<IRegionsResponse['data']>([]);
   const [districts, setDistricts] = useState<IRegionsResponse['data']>([]);
-  const { appState } = useContext(AppContext);
+  const { appState, setAppState } = useContext(AppContext);
   const [loading, setLoading] = useState(true);
   const [valueInputs, setValueInputs] = useState({
     firstName: appState.user?.first_name,
@@ -85,11 +86,11 @@ const Profile: React.FC<IProfile> = () => {
     
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const toastId = toastLoading("Saving data...");
     if(!firstName || !lastName || !email || !phone) {
       return toastError("Please fill in all fields!");
     }
     setSaveLoading(true);
+    const toastId = toastLoading("Saving data...");
     try {
       const formData = new FormData();
       formData.append('first_name', firstName);
@@ -99,11 +100,25 @@ const Profile: React.FC<IProfile> = () => {
       if(image) {
         formData.append('image', image);
       }
-      const user = await $host.patch<IUser>("/users/me/", formData);
-      console.log(user)
+      await $host.patch<IUser>("/users/me/", formData);
       toastSuccess("Saved data", toastId);
+      setAppState(prev => ({
+        ...prev,
+        user: {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: phone,
+          image: imgSrc,
+          region: null,
+          district: null,
+          address: address
+        }
+      }));
     } catch (error) {
       if(error instanceof Error) {
+        const err = error as any;
+        err.response?.data?.errors.forEach((item: any) => toastError(item.message))
         toastError(error.message, toastId);
       }
       setSaveLoading(false);
@@ -197,8 +212,8 @@ const Profile: React.FC<IProfile> = () => {
             </FormControl>
           </Box>
         </Box>
-        <Box className="mt-4 flex w-2/4 justify-between">
-          <Box className="border border-rounded rounded-lg">
+        <Box className="mt-4 flex">
+          <Box className="border border-rounded rounded-lg mr-4">
             <Box
               component="img"
               className="rounded-lg"
@@ -233,7 +248,12 @@ const Profile: React.FC<IProfile> = () => {
         </Box>
 
         <Box className="mt-4">
-          <Button type="submit" variant="contained" color="success">
+          <Button 
+            type="submit" 
+            variant="contained" 
+            color="success"
+            disabled={saveLoading}
+          >
             Edit
           </Button>
         </Box>
