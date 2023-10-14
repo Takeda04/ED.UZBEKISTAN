@@ -6,9 +6,7 @@ const Layout: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
   return (
     <Section>
       <Header />
-      <Section>
-        {children}
-      </Section>
+      <Section>{children}</Section>
     </Section>
   );
 };

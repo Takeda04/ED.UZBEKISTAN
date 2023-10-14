@@ -1,8 +1,10 @@
-import { Container } from '@mui/system';
+import { SetStateAction, useEffect, useState } from 'react';
 import NewsCard from '../components/Cards/NewsCard';
-import { Title } from '../static/tags';
+import { Container, Title } from '../static/tags';
+import { Skeleton } from '@mui/material';
+import { Box } from '@mui/system';
 
-export const news_list = [
+export let news_list: INew[] = [
   {
     img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1696958812/finalsite/rmrc8xzh8m1s9rdzjyol/Hacker_back_to_school.jpg',
     title: 'lorem ipsum dolor sit amet',
@@ -61,17 +63,44 @@ export interface INew {
 }
 
 const News = () => {
+  const [news, setNews] = useState<INew[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNews(news_list);
+      setLoading(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Container className="!mt-4">
-      <Title>News</Title>
-      <ul className='grid grid-cols-4 mt-4 gap-6 w-full'>
-        {news_list?.map((item, i) => (
-          <li className='flex'>
-            <NewsCard item={item} key={i} />
-          </li>
-        ))}
-      </ul>
-    </Container>
+    <main className='py-2 gap-2 rounded-lg my-10 w-full'>
+      <Container>
+        <Title>News</Title>
+        <ul className='grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 gap-6 xl:grid-cols-4 mt-10 mr-2 justify-between'>
+          {!loading && news?.map((item, i) => <NewsCard item={item} key={i} />)}
+          {loading &&
+            Array(8)
+              .fill(undefined)
+              .map((item, i) => (
+                <li className='rounded-sm overflow-hidden' key={i}>
+                  <Skeleton variant='rectangular' height={190} animation='wave' />
+                  <Box sx={{ p: 1 }}>
+                    <Skeleton width='20%' animation='wave' />
+                    <Skeleton width='40%' animation='wave' />
+                    <Skeleton height={40} animation='wave' className='!mt-2' />
+                    <Skeleton height={15} animation='wave' className='!mt-4' />
+                    <Skeleton height={15} animation='wave' />
+                    <Skeleton height={15} animation='wave' />
+                    <Skeleton height={15} animation='wave' />
+                    <Skeleton height={15} animation='wave' width='20%' />
+                    <Skeleton height={45} width='30%' animation='wave' className='!mt-[30px]' />
+                  </Box>
+                </li>
+              ))}
+        </ul>
+      </Container>
+    </main>
   );
 };
 

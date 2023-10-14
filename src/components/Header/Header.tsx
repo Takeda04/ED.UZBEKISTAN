@@ -33,10 +33,11 @@ const Header = () => {
 
   return (
     <Paper
-      className={`bg-transparent shadow-none rounded-none border-b-2 bg-white sticky top-0 z-[100]`}
+      sx={{ backgroundImage: 'none' }}
+      className={`bg-transparent shadow-none w-full rounded-none border-b-2 bg-white sticky top-0 z-[999]`}
     >
       <Container>
-        <HtmlHeader className='justify-between'>
+        <HtmlHeader className='!px-0 justify-between' >
           <Link to={'/'} className='inline-flex items-center gap-1'>
             <h1 className={`text-[1.8em] text-black font-bold`}>
               EDU<span className='text-blue-500'>ZONE</span>
