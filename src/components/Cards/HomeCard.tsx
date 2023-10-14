@@ -5,7 +5,7 @@ const HomeCard = () => {
 
     return (
         <Grid item xs={2} sm={4} md={4}>
-            <Box className="shadow rounded-lg">
+            <Box className="shadow-lg transition-shadow duration-300 rounded-lg hover:shadow-blue-400">
                 <Box>
                     <Box
                         className="rounded-t-lg"
