@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,8 +14,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { toastError, toastSuccess } from "../toast/toast";
 import $host from "../http";
-import { ILoginResponse } from "../http/types";
+import { ILoginResponse, IUserResponse } from "../http/types";
 import { FormControl } from "@mui/material";
+import { AppContext } from "../context/AppContextProvider";
 
 //firebase
 
@@ -24,6 +25,7 @@ const defaultTheme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = React.useState<boolean>(false);
+  const { setAppState } = useContext(AppContext);
 
   const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,6 +37,10 @@ export default function Login() {
       const { data } = await $host.post<ILoginResponse>("/users/login/", { email, password });
       localStorage.setItem("accessToken", data.access_token);
       localStorage.setItem("refreshToken", data.refresh_token);
+
+      const user = await $host.get<IUserResponse>("/users/me/");
+      setAppState({ user: user.data.data, isAuth: true });
+      
       navigate("/");
     } catch (error) {
       if(error instanceof Error) {
