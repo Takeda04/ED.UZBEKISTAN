@@ -10,16 +10,16 @@ const ProfileRoutes = () => {
 
     return (
         <Routes>
-                <Route element={<ProfileLayout/>}>
-                    {profileRouteList.map((route) => (
-                        <Route 
-                            key={route.path}
-                            index={route.index} 
-                            path={route.path} 
-                            element={route.component} 
-                        />
-                    ))}
-                </Route>
+            <Route element={<ProfileLayout/>}>
+                {profileRouteList.map((route) => (
+                    <Route 
+                        key={route.path}
+                        index={route.index} 
+                        path={route.path} 
+                        element={route.component} 
+                    />
+                ))}
+            </Route>
         </Routes>
     );
 }
