@@ -36,6 +36,7 @@ function App() {
         {routes?.map(({ path, Component }) => (
           <Route
             path={path}
+            key={v4()}
             element={
               <Private>
                 <Layout>
@@ -43,7 +44,6 @@ function App() {
                 </Layout>
               </Private>
             }
-            key={v4()}
           />
         ))}
       </Routes>

@@ -14,7 +14,7 @@ const ClassComponent = () => {
   return (
     <main className="flex flex-wrap items-center justify-center mt-2">
       <Box className="grid grid-cols-1 sm:grid-cols-2 w-[900]:grid-cols-3 xl:grid-cols-3 gap-4 my-1">
-        {sinf?.categories?.map((item) => (
+        {sinf?.categories?.((item) => (
           <SinfCard item={item} sinf_raqam={sinf.class_num} />
         ))}
       </Box>

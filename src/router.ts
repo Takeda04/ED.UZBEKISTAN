@@ -9,6 +9,7 @@ const Students = lazy(() => import("./pages/Students"));
 const Teachers = lazy(() => import("./pages/Teachers"));
 const Settings = lazy(() => import("./pages/Settings"));
 const ClassComponent = lazy(() => import("./pages/Class"))
+const ProfileRoutes = lazy(() => import("./ProfileRoutes"));
 
 export const routes = [
   {
@@ -28,8 +29,8 @@ export const routes = [
     Component: News,
   },
   {
-    path: "/profile",
-    Component: Profile,
+    path: "/profile/*",
+    Component: ProfileRoutes,
   },
   {
     path: "/statistics",

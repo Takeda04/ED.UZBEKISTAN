@@ -18,7 +18,7 @@ const Profile: React.FC<IProfile> = () => {
 
 
   return (
-    <Container>
+    <Box className="px-4">
       <Title className="mt-4">My profile</Title>
       <Box className="mt-2">
         <span className="font-bold ">E-mail: </span>
@@ -57,9 +57,7 @@ const Profile: React.FC<IProfile> = () => {
           </Button>
         </Box>
       </FormControl>
-
-
-    </Container>
+    </Box>
   );
 };
 
