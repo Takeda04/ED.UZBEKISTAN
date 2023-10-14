@@ -1,12 +1,10 @@
 import { styled } from "@mui/material/styles";
 
 export const HtmlHeader = styled("header")(() => ({
-  width: "100%",
   height: "70px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "0 2.5rem",
 }));
 
 export const Main = styled("main")(() => ({

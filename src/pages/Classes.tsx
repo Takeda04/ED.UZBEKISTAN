@@ -4,7 +4,6 @@ import { classes } from "../static/data";
 
 const Classes = () => {
 
-
   return (
     <main className="flex flex-wrap items-center justify-center mt-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 w-[900]:grid-cols-3 xl:grid-cols-3 gap-4 my-1">
