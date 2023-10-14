@@ -1,8 +1,8 @@
-import React, { MouseEvent, useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 //Import Styled Component
 
-import { Description, HtmlHeader, Section } from '../../static/tags';
+import { Container, Description, HtmlHeader, Section } from '../../static/tags';
 
 //Import MUI components
 
@@ -33,102 +33,103 @@ const Header = () => {
 
   return (
     <Paper
-      sx={{ backgroundImage: 'none' }}
-      className={`bg-transparent shadow-none w-full rounded-none border-b-2 bg-white px-[10em] sticky top-0 z-[999]`}
+      className={`bg-transparent shadow-none rounded-none border-b-2 bg-white sticky top-0 z-[100]`}
     >
-      <HtmlHeader className='justify-between'>
-        <Link to={'/'} className='inline-flex items-center gap-1'>
-          <h1 className={`text-[1.8em] text-black font-bold`}>
-            EDU<span className='text-blue-500'>ZONE</span>
-          </h1>
-        </Link>
-        <Section className='flex items-center gap-5'>
-          <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/classes')}>
-            <IconButton color='inherit'>
-              <MdOutlineClass className='text-[1.4rem]' />
+      <Container>
+        <HtmlHeader className='justify-between'>
+          <Link to={'/'} className='inline-flex items-center gap-1'>
+            <h1 className={`text-[1.8em] text-black font-bold`}>
+              EDU<span className='text-blue-500'>ZONE</span>
+            </h1>
+          </Link>
+          <Section className='flex items-center gap-5'>
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/classes')}>
+              <IconButton color='inherit'>
+                <MdOutlineClass className='text-[1.4rem]' />
+              </IconButton>
+              <Description>Sinflar</Description>
+            </Box>
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/students')}>
+              <IconButton color='inherit'>
+                <PiStudentBold className='text-[1.4rem]' />
+              </IconButton>
+              <Description>O'quvchilar</Description>
+            </Box>
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/teachers')}>
+              <IconButton color='inherit'>
+                <FaChalkboardTeacher className='text-[1.4rem]' />
+              </IconButton>
+              <Description>Ustozlar</Description>
+            </Box>
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/news')}>
+              <IconButton color='inherit'>
+                <Badge badgeContent={news_list ? news_list?.length : 0} color='primary'>
+                  <PiNewspaperClippingBold className='text-[1.4rem]' />
+                </Badge>
+              </IconButton>
+              <Description>Yangiliklar</Description>
+            </Box>
+            <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/statistics')}>
+              <IconButton color='inherit'>
+                <ImStatsBars />
+              </IconButton>
+              <Description>Statistika</Description>
+            </Box>
+            <IconButton
+              onClick={handleClick}
+              size='small'
+              sx={{ ml: 2 }}
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup='true'
+              aria-expanded={open ? 'true' : undefined}
+            >
+              <Avatar
+                sx={{
+                  width: 45,
+                  height: 45,
+                }}
+                alt='Ava'
+                src='../../assets/images/me.jpeg'
+                className='border-2'
+              />
             </IconButton>
-            <Description>Sinflar</Description>
-          </Box>
-          <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/students')}>
-            <IconButton color='inherit'>
-              <PiStudentBold className='text-[1.4rem]' />
-            </IconButton>
-            <Description>O'quvchilar</Description>
-          </Box>
-          <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/teachers')}>
-            <IconButton color='inherit'>
-              <FaChalkboardTeacher className='text-[1.4rem]' />
-            </IconButton>
-            <Description>Ustozlar</Description>
-          </Box>
-          <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/news')}>
-            <IconButton color='inherit'>
-              <Badge badgeContent={news_list ? news_list?.length : 0} color='primary'>
-                <PiNewspaperClippingBold className='text-[1.4rem]' />
-              </Badge>
-            </IconButton>
-            <Description>Yangiliklar</Description>
-          </Box>
-          <Box className='flex items-center cursor-pointer hover:text-blue-500' onClick={() => navigate('/statistics')}>
-            <IconButton color='inherit'>
-              <ImStatsBars />
-            </IconButton>
-            <Description>Statistika</Description>
-          </Box>
-          <IconButton
-            onClick={handleClick}
-            size='small'
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup='true'
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar
-              sx={{
-                width: 45,
-                height: 45,
+            <Menu
+              id='basic-menu'
+              anchorEl={menu}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
               }}
-              alt='Ava'
-              src='../../assets/images/me.jpeg'
-              className='border-2'
-            />
-          </IconButton>
-          <Menu
-            id='basic-menu'
-            anchorEl={menu}
-            open={open}
-            onClose={handleClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
-          >
-            <MenuItem onClick={handleClose}>
-              <Link to='/profile'>
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to='/profile'>
+                  <ListItemIcon>
+                    <BiUser />
+                  </ListItemIcon>
+                  Profilim
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to='/settings'>
+                  <ListItemIcon>
+                    <MdSettings />
+                  </ListItemIcon>
+                  Sozlamalar
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
                 <ListItemIcon>
-                  <BiUser />
+                  <BiLogOut />
                 </ListItemIcon>
-                Profilim
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <Link to='/settings'>
-                <ListItemIcon>
-                  <MdSettings />
-                </ListItemIcon>
-                Sozlamalar
-              </Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItemIcon>
-                <BiLogOut />
-              </ListItemIcon>
-              Chiqish
-            </MenuItem>
-          </Menu>
-        </Section>
-      </HtmlHeader>
+                Chiqish
+              </MenuItem>
+            </Menu>
+          </Section>
+        </HtmlHeader>
+      </Container>
     </Paper>
   );
 };
