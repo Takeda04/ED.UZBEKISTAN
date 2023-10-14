@@ -11,8 +11,6 @@ interface IContextProvider {
 
 const StateContext = createContext<IStateContext>(null!);
 
-
-
 const ContextProvider: React.FC<IContextProvider> = ({ children }) => {
   const [currentMode, setCurrentMode] = useState<string>("Light");
 

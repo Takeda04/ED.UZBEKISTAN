@@ -33,8 +33,8 @@ export default function Login() {
     setLoading(true);
     try {
       const { data } = await $host.post<ILoginResponse>("/users/login/", { email, password });
-      localStorage.setItem("accessToken", data.access);
-      localStorage.setItem("refreshToken", data.refresh);
+      localStorage.setItem("accessToken", data.access_token);
+      localStorage.setItem("refreshToken", data.refresh_token);
       navigate("/");
     } catch (error) {
       if(error instanceof Error) {
