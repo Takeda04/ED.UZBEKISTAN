@@ -1,5 +1,6 @@
 import { Container } from '@mui/system';
 import NewsCard from '../components/Cards/NewsCard';
+import { Title } from '../static/tags';
 
 export const news_list = [
   {
@@ -61,18 +62,16 @@ export interface INew {
 
 const News = () => {
   return (
-    <main className='flex flex-col py-2 gap-2 rounded-lg my-10'>
-      <Container>
-        <h2 className='text-4xl'>News</h2>
-        <ul className='grid grid-cols-1 min-[480px]:grid-cols-2 gap-8 md:grid-cols-3 xl:grid-cols-4 mt-10'>
-          {news_list?.map((item, i) => (
-            <li className='flex'>
-              <NewsCard item={item} key={i} />
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </main>
+    <Container className="!mt-4">
+      <Title>News</Title>
+      <ul className='grid grid-cols-4 mt-4 gap-6 w-full'>
+        {news_list?.map((item, i) => (
+          <li className='flex'>
+            <NewsCard item={item} key={i} />
+          </li>
+        ))}
+      </ul>
+    </Container>
   );
 };
 
