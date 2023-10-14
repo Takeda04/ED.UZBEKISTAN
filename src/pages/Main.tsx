@@ -1,8 +1,16 @@
 import React from 'react'
+import { Container, Title } from '../static/tags'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <Container>
+      <Title className='border-b border-black mt-4'>
+        My courses
+      </Title>
+
+      
+      
+    </Container>
   )
 }
 
