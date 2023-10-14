@@ -234,7 +234,7 @@ const Profile: React.FC<IProfile> = () => {
 
         <Box className="mt-4">
           <Button type="submit" variant="contained" color="success">
-            Success
+            Edit
           </Button>
         </Box>
       </Box>

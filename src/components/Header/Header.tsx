@@ -23,7 +23,7 @@ import { AppContext } from '../../context/AppContextProvider';
 
 const Header = () => {
   const navigate = useNavigate();
-  const { setAppState } = useContext(AppContext);
+  const { appState, setAppState } = useContext(AppContext);
   const [menu, setMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(menu);
 
@@ -101,7 +101,7 @@ const Header = () => {
                   height: 45,
                 }}
                 alt='Ava'
-                src='../../assets/images/me.jpeg'
+                src={appState.user?.image || "../../assets/images/me.jpeg"}
                 className='border-2'
               />
             </IconButton>
