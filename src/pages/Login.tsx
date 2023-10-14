@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -23,13 +23,14 @@ const defaultTheme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get("password")
+    setLoading(true);
     try {
       const { data } = await $host.post<ILoginResponse>("/users/login/", { email, password });
       localStorage.setItem("accessToken", data.access);
@@ -40,6 +41,8 @@ export default function Login() {
         toastError(error.message);
         event.preventDefault();
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -100,6 +103,7 @@ export default function Login() {
                 label="Remember me"
               />
               <Button
+                disabled={loading}
                 type="submit"
                 fullWidth
                 variant="contained"
