@@ -43,9 +43,9 @@ const Sidebar = () => {
     <Box className="fixed top-0 flex flex-col h-full w-[200px] shadow-xl bg-white">
       
       <Box className="flex mt-10 justify-center ">
-        <h1 className={`text-[1.8em] text-black font-bold`}>
+        <Link to="/" className={`text-[1.8em] text-black font-bold`}>
             EDU<span className='text-blue-500'>ZONE</span>
-        </h1>
+        </Link>
       </Box>
 
       <Box className="flex flex-col mt-8 h-full ">

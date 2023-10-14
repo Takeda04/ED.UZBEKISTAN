@@ -241,7 +241,7 @@ const Profile: React.FC<IProfile> = () => {
             value={address}
             onChange={handleChange}
             minRows={2}
-            placeholder="Address"
+            placeholder="About me"
             variant="outlined"
             size="lg"
           />
