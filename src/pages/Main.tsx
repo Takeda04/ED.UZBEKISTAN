@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Title } from '../static/tags'
+import HomeCard from '../components/Cards/HomeCard'
 
 const Main = () => {
   return (
@@ -8,6 +9,10 @@ const Main = () => {
         My courses
       </Title>
 
+      <HomeCard/>
+      <HomeCard/>
+      <HomeCard/>
+      <HomeCard/>
       
       
     </Container>

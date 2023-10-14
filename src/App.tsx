@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { routes } from "./router";
 import { v4 } from "uuid";
 import Private from "./private/Private";
+
 const Layout = lazy(() => import("./layouts/Layout"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Login = lazy(() => import("./pages/Login"));
