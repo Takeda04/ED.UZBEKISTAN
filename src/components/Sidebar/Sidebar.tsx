@@ -36,15 +36,15 @@ const Sidebar = () => {
   ];
 
   return (
-    <Box className="fixed top-0 flex flex-col h-full w-[200px] shadow-xl">
+    <Box className="fixed top-0 flex flex-col h-full w-[200px] shadow-xl bg-white">
       
-      <Box className="flex mt-10 justify-center">
+      <Box className="flex mt-10 justify-center ">
         <h1 className={`text-[1.8em] text-black font-bold`}>
             EDU<span className='text-blue-500'>ZONE</span>
         </h1>
       </Box>
 
-      <Box className="flex flex-col mt-8 h-full">
+      <Box className="flex flex-col mt-8 h-full ">
         {SidebarMenu.map((item) => (
           <Link key={item.title} className="flex py-4 px-8 hover:bg-blue-300" to={item.title}>
             {item.icon} <span className="ml-2 font-medium">{item.title}</span>
