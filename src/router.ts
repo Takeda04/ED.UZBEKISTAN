@@ -20,7 +20,7 @@ export const routes = [
     Component: Classes,
   },
   {
-    path: "/class/:id", 
+    path: "/class/:num", 
     Component: ClassComponent,
   },
   {
