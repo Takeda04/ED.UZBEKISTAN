@@ -1,6 +1,9 @@
-import { SvgIconProps } from "@mui/material";
 import SidebarCard from "../Cards/SidebarCard"
-import QuizIcon from '@mui/icons-material/Quiz';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+
 const Sidebar = () => {
 
 
@@ -12,20 +15,20 @@ const Sidebar = () => {
 
   const sidebar_list: menu = [
     {
-      icon: <QuizIcon/>,
+      icon: <BookmarkBorderIcon/>,
       title: "Training",
     },
     {
-      icon: <QuizIcon/>,
+      icon: <HelpOutlineIcon/>,
       title: "Quizes"
     },
     {
-      icon: <QuizIcon/>,
+      icon: <SignalCellularAltIcon/>,
       title: "Accuracy",
     },
     {
-      icon: <QuizIcon/>,
-      title: "Message",
+      icon: <NotificationsNoneIcon/>,
+      title: "Notifications",
     }
   ];
 
