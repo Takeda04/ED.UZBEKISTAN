@@ -1,56 +1,60 @@
 export const AI = [
   {
-    question: "1. 3 + 4 = ?",
-    options: {
-      a: "5",
-      b: "6",
-      c: "7",
-      d: "8",
-      f: "bilmayman",
+    "question": "Kichik sonlarni sanash. 5+3=?",
+    "options": {
+      "a": "4",
+      "b": "8",
+      "c": "7",
+      "d": "2",
+      "f": "bilmayman"
     },
-    true_answer: "c",
-    description: "Ushbu savol 3 va 4 ni qo'shib nechta hosil qiladi?",
-    video: "https://www.youtube.com/watch?v=VHM3zYa3Le8",
+    "true_answer": "b",
+    "description": "Ushbu savol o'zgaruvchisiz matematik savoli. 5 va 3 sonlarini qo'shganda natijada nechta chiqadi?",
+    "video": "https://www.youtube.com/watch?v=PlgUFxJqAJ0&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs"
+  }
+,  
+{
+  "question": "Tartib bilan 1 dan 10 gacha bo'lgan butun sonlarni qo'shib ketib, natija qancha bo'ladi?",
+  "options": {
+    "a": "45",
+    "b": "55",
+    "c": "65",
+    "d": "35",
+    "f": "bilmayman"
   },
-  {
-    question: "2. 8 * 5 = ?",
-    options: {
-      a: "10",
-      b: "20",
-      c: "30",
-      d: "40",
-      f: "bilmayman",
-    },
-    true_answer: "d",
-    description: "Ushbu savol 8 ni 5 marta ko'paytirganda nechta hosil qiladi?",
-    video: "https://www.youtube.com/watch?v=4_n4teZwhdI",
+  "true_answer": "b",
+  "description": "Ushbu savolni to'g'ri javobi 'b' bo'lib, natija 1 dan 10 gacha bo'lgan butun sonlarni tartib bilan qo'shib ketishda 55 ga teng bo'ladi.",
+  "video": "https://www.youtube.com/watch?v=nCzWww66yCo&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs&index=2"
+}
+,
+{
+  "question": "1 dan 10 gacha bo'lgan tub sonlarni toping.",
+  "options": {
+    "a": "2, 3, 4, 5, 6, 7, 8, 9",
+    "b": "1, 4, 6, 8, 10",
+    "c": "2, 3, 5, 7",
+    "d": "1, 2, 3, 5, 7",
+    "f": "bilmayman"
   },
-  {
-    question: "3. 12 / 2 = ?",
-    options: {
-      a: "2",
-      b: "4",
-      c: "6",
-      d: "8",
-      f: "bilmayman",
-    },
-    true_answer: "c",
-    description: "Ushbu savol 12 ni 2 ga bo'lib qanday natija hosil qiladi?",
-    video: "https://www.youtube.com/watch?v=4_n4teZwhdI",
+  "true_answer": "c",
+  "description": "Ushbu savolni to'g'ri javobi 'c' bo'lib, 1 dan 10 gacha bo'lgan tub sonlarni topish uchun 2, 3, 5 va 7 sonlarini tanlashingiz kerak.",
+  "video": "https://www.youtube.com/watch?v=g7bKuPb__Ag&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs&index=3"
+}
+,
+{
+  "question": "Tushiringan sonlar orasida 2 ga qoldiqsiz bo'linadigan sonlar qaysilari?",
+  "options": {
+    "a": "3, 7, 11",
+    "b": "2, 4, 6, 8, 10",
+    "c": "1, 5, 9, 13",
+    "d": "12, 14, 16",
+    "f": "bilmayman"
   },
-  {
-    question: "4. 15 - 7 = ?",
-    options: {
-      a: "5",
-      b: "6",
-      c: "7",
-      d: "8",
-      f: "bilmayman",
-    },
-    true_answer: "d",
-    description: "Ushbu savol 15 dan 7 ni ayrib qancha hosil qiladi?",
-    video: "https://www.youtube.com/watch?v=VHM3zYa3Le8",
-  },
+  "true_answer": "b",
+  "description": "Ushbu savolni to'g'ri javobi 'b' bo'lib, 2 ga qoldiqsiz bo'linadigan sonlar 2, 4, 6, 8 va 10 sonlari.",
+  "video": "https://www.youtube.com/watch?v=bBHomOA-FHs&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs&index=4"
+}
+,
   {
     question: "5. 9 ning darajasi = ?",
     options: {
