@@ -24,7 +24,7 @@ const Sidebar = () => {
     },
     {
       icon: <HelpOutlineIcon/>,
-      title: "Quizes",
+      title: "Testing",
       path: 'quizes',
     },
     {

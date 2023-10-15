@@ -55,24 +55,24 @@ const Header = () => {
             </h1>
           </Link>
           <Section className='flex items-center gap-5'>
-            <AppNavLink to="/classes" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
+            {/* <AppNavLink to="/classes" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <MdOutlineClass className='text-[1.4rem]' />
               </IconButton>
               <Description>Sinflar</Description>
-            </AppNavLink>
-            <AppNavLink to="/students" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
+            </AppNavLink> */}
+            {/* <AppNavLink to="/students" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <PiStudentBold className='text-[1.4rem]' />
               </IconButton>
               <Description>O'quvchilar</Description>
-            </AppNavLink>
-            <AppNavLink to="/teachers" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
+            </AppNavLink> */}
+            {/* <AppNavLink to="/teachers" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <FaChalkboardTeacher className='text-[1.4rem]' />
               </IconButton>
               <Description>Ustozlar</Description>
-            </AppNavLink>
+            </AppNavLink> */}
             <AppNavLink to="/news" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
               <IconButton color='inherit'>
                 <Badge badgeContent={news_list ? news_list?.length : 0} color='primary'>
@@ -86,6 +86,12 @@ const Header = () => {
                 <ImStatsBars />
               </IconButton>
               <Description>Statistika</Description>
+            </AppNavLink>
+            <AppNavLink to="/settings" isActiveClass="text-blue-500" className='flex items-center cursor-pointer hover:text-blue-500'>
+              <IconButton color='inherit'>
+                <MdSettings className='text-[1.4rem]' />
+              </IconButton>
+              <Description>Sozlamalar</Description>
             </AppNavLink>
             <IconButton
               onClick={handleClick}
@@ -124,14 +130,14 @@ const Header = () => {
                   Profilim
                 </NavLink>
               </MenuItem>
-              <MenuItem onClick={handleClose}>
+              {/* <MenuItem onClick={handleClose}>
                 <NavLink to='/settings'>
                   <ListItemIcon>
                     <MdSettings />
                   </ListItemIcon>
                   Sozlamalar
                 </NavLink>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem onClick={logout}>
                 <ListItemIcon>
                   <BiLogOut />

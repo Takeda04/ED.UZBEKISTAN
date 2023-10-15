@@ -1,6 +1,11 @@
+import MyChart from "../components/Cards/ChartCard"
+import { Container } from "../static/tags"
+
 const Accuracy = () => {
   return (
-    <div>Accuracy</div>
+    <Container>
+      <MyChart/>
+    </Container>
   )
 }
 

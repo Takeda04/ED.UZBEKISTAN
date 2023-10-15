@@ -3,6 +3,7 @@ import Profile from "./pages/Profile";
 import Quizes from "./pages/Quizes";
 import ProfileTraining from "./pages/ProfileTraining";
 import TrainingPage from "./pages/TrainingPage";
+import Accuracy from "./pages/Accuracy";
 
 
 export const profileRouteList = [
@@ -25,5 +26,10 @@ export const profileRouteList = [
         path: "/training/:id",
         index: false,
         component: <TrainingPage/>,
+    }, 
+    {
+        path: "/profile/accuracy",
+        index: false,
+        component: <Accuracy/>,
     },
 ]
