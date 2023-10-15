@@ -11,10 +11,16 @@ import {
   Container,
   createTheme,
   ThemeProvider,
+  InputLabel,
+  Select,
 } from "@mui/material";
 import { toastError, toastSuccess } from "../toast/toast";
 import { useNavigate } from "react-router-dom";
 import $host from "../http";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { FormControl, MenuItem } from "@mui/base";
 // import { auth } from "../utils/firebase";
 
 const defaultTheme = createTheme();
@@ -116,6 +122,18 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={14}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker />
+                </LocalizationProvider>
+              </Grid>
+              <Grid item xs={14}>
+                <TextField
+                  fullWidth
+                  type="number"
+                  InputProps={{ inputProps: { min: 0, max: 10 } }}
                 />
               </Grid>
               {/* <Grid item xs={12}>
