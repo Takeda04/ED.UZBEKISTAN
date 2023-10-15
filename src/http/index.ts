@@ -1,7 +1,7 @@
 import axios from "axios";
 // import { getCookie, setCookie } from "../helper";
 
-export const API_URL = "http://137.184.34.184/";
+export const API_URL = "https://roottechbackendmater.pythonanywhere.com/";
 
 const $host = axios.create({
     baseURL: API_URL,

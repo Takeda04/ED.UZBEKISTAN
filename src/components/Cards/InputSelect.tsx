@@ -23,7 +23,7 @@ const InputSelect: React.FC<IInputSelect> = ({ question, options, onChange, valu
         name="radio-buttons-group"
         value={value}
         onChange={onChange}
-        style={{ color: isWrong ? 'red' : 'green' }}
+        style={{ color: isWrong ? 'red' : 'inherit' }}
       >
         {Object.keys(options).map((key) => (
           <FormControlLabel key={key} value={key} control={<Radio />} label={options[key]} />
