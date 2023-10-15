@@ -10,7 +10,7 @@ interface IHomeCard {
 }
 
 const HomeCard: React.FC<IHomeCard> = ({ to, level, description, url }) => {
-        
+
 
 
     return (
@@ -31,7 +31,7 @@ const HomeCard: React.FC<IHomeCard> = ({ to, level, description, url }) => {
                     </Box>
                     <Box className="p-4">
                         <Box className="font-medium mt-2">
-                            Level: 
+                            Subject: 
                             <span className="font-normal ml-1">{ level }</span>
                         </Box>
                         <Box

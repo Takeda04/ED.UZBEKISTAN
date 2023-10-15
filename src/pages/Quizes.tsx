@@ -5,11 +5,13 @@ import { Container, Title } from "../static/tags";
 import { useEffect, useState } from "react";
 import useDidMountEffect from "../hooks/useDidMountEffect";
 import { useNavigate } from "react-router";
-import { toastError } from "../toast/toast";
+import { toastError, toastSuccess } from "../toast/toast";
+import { AI } from "../static/AI";
 
 const Quizes = () => {
   const [isReady, setIsReady] = useState(false);
   const [exitCount, setExitCount] = useState(4);
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(quizes.length).fill(''));
   const navigate = useNavigate();
 
   function enterFullScreen(element: any) {
@@ -22,6 +24,12 @@ const Quizes = () => {
     }else if(element.msRequestFullscreen) {
       element.msRequestFullscreen();
     }
+  };
+
+  const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>, idx: any) => {
+    const updatedAnswers = [...selectedAnswers];
+    updatedAnswers[idx] = event.target.value;
+    setSelectedAnswers(updatedAnswers);
   };
 
   const handleStart = () => {
@@ -54,6 +62,30 @@ const Quizes = () => {
     }
   }
 
+  const handleSubmit = () => {
+    let flag = false;
+    console.log(selectedAnswers)
+    console.log(AI)
+
+    selectedAnswers.forEach((item, idx) => {
+      if(item.length === 0) {
+        toastError(`${idx + 1} not choosen!`);
+        flag = true;
+      }
+    });
+    if(flag) {
+      return;
+    }
+
+    const wrongAnswers = AI.slice(0, 25).filter((item, idx) => {
+      return selectedAnswers[idx] !== item.true_answer;
+    })
+
+    localStorage.setItem("WrongAnswers", JSON.stringify(wrongAnswers));
+    toastSuccess("Test succesfully submited!");
+    navigate("/profile/training");
+  }
+
   useDidMountEffect(() => {
     if(exitCount === 0) {
       toastError("You failed the tests because there were many attempts to exit the page");
@@ -84,15 +116,20 @@ const Quizes = () => {
         :
         <Box className="flex flex-col gap-y-5">
           <Title className="mt-6">Quizes</Title>
-          {quizes?.map(({ question, options, correctAnswer }, idx) => (
+          {AI.slice(0, 25).map(({ question, options, true_answer }, idx) => (
             <Box className="border-b border-black py-3" key={idx}>
               <InputSelect
-                key={correctAnswer}
+                key={true_answer}
                 question={question}
                 options={options}
+                value={selectedAnswers[idx]}
+                onChange={(event) => handleAnswerChange(event, idx)}
               />
             </Box>
           ))}
+          <Button className="!my-6" onClick={handleSubmit} variant="contained">
+            Submit
+          </Button>
         </Box>
     }
     </Container>

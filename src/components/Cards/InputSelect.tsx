@@ -5,13 +5,26 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-const InputSelect: React.FC<{ question: string; options: { [key: string]: number | string } }> = ({ question, options }) => {
+interface IInputSelect {
+  question: string; 
+  options: { [key: string]: number | string };
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, value?: string) => void;
+  value?: string;
+}
+
+const InputSelect: React.FC<IInputSelect> = ({ question, options, onChange, value }) => {
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label" style={{ fontSize: '22px', color: 'black' }}>{question}</FormLabel>
-      <RadioGroup aria-labelledby="demo-radio-buttons-group-label" defaultValue="" name="radio-buttons-group">
+      <RadioGroup 
+        aria-labelledby="demo-radio-buttons-group-label" 
+        defaultValue="" 
+        name="radio-buttons-group"
+        value={value}
+        onChange={onChange}  
+      >
         {Object.keys(options).map((key) => (
-          <FormControlLabel  key={key} value={key} control={<Radio />} label={options[key]} />
+          <FormControlLabel key={key} value={key} control={<Radio />} label={options[key]} />
         ))}
       </RadioGroup>
     </FormControl>
