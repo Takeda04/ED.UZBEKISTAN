@@ -9,7 +9,9 @@ export const AI = [
       "f": "bilmayman"
     },
     "true_answer": "b",
-    "description": "Ushbu savol o'zgaruvchisiz matematik savoli. 5 va 3 sonlarini qo'shganda natijada nechta chiqadi?",
+    "description": `Kichik sonlarni sanash, bir sonlar qatorida eng kichik sonni aniqlash va uning qiymatini topish amaliyati hisoblanadi. Bu amaliyat o'zgaruvchisizlarda va o'zgaruvchili sonlarda olib borilishi mumkin. O'zgaruvchisizlarda, kichik sonni aniqlash uchun quyidagi formulani ishlatamiz:
+    O'zgaruvchili sonlarda esa, dastlab biror bir xil qiymatni olib chiqish uchun algoritm tuziladi, keyin ularning o'rtasidan eng kichik aniqlanadi. Kichik sonlarni sanash amaliyati ko'p matematik va dasturiy tillarda aniqlash uchun foydalaniladi. Bu amaliyat sodda sonlarni ta'rif qilish, taqqoslash, va tartiblash jarayonlarida amalga oshiriladi`,
+    
     "video": "https://www.youtube.com/watch?v=PlgUFxJqAJ0&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs"
   }
 ,  
@@ -23,7 +25,13 @@ export const AI = [
     "f": "bilmayman"
   },
   "true_answer": "b",
-  "description": "Ushbu savolni to'g'ri javobi 'b' bo'lib, natija 1 dan 10 gacha bo'lgan butun sonlarni tartib bilan qo'shib ketishda 55 ga teng bo'ladi.",
+  "description": `Tartib sonlar, bir qator sonlar yoki obyektlar qatori, ulug' bir son qatorini o'z ichiga olishi kerak bo'lgan dastur so'rovlarida va boshqa matematik va dasturiy muammolar hal qilish uchun juda ko'p foydalaniladigan matematik konseptdir. Tartib sonlar, o'zgaruvchi sonlar, ko'rsatkichlar yoki obyektlar qatorida joylashgan sonlar to'plamini ifodalaydi. Bu tartib sonlar qatorlari, ko'rsatkichlar yoki o'zgaruvchilarning o'zaro taqqoslash, tekshirish, va baholash bo'yicha juda foydali bo'lgan ma'lumotlarni olishga yordam beradi.
+
+  Misol uchun, o'zingizni o'zgartiring:
+  
+  "Kutubxonaning boshqaruvchisi, kitoblarini saralash uchun tartib sonlar va yozuvlar (avtornomlar) bilan ishlaydi. Har bir kitobning tartib soni uning saralash joyida o'ziga xos tartibdagi raqamdir. Kitoblar jadvallar ustida joylashgan, va ularni nazorat qilishda tartib sonlar boshqaruvchiga qulaylik yaratadi."
+  
+  Bu matnda tartib sonlarning aksar foydalanish sohalaridan birini ko'rsatishimiz mumkin, lekin ularning o'zgaruvchilarda yoki nazorat tizimlarida qanday ishlatilishi masalalari juda turli bo'lishi mumkin.`,
   "video": "https://www.youtube.com/watch?v=nCzWww66yCo&list=PLGO4HdV8zhh-gepadWs2Li_ANkwnaA-Bs&index=2"
 }
 ,
