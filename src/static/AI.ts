@@ -14,7 +14,7 @@ export const AI = [
   }
 ,  
 {
-  "question": "Tartib bilan 1 dan 10 gacha bo'lgan butun sonlarni qo'shib ketib, natija qancha bo'ladi?",
+  "question": "Tartib bilan 1 dan 10 gacha bo'lgan butun sonlarni qo'shib ketib, natija bo'ladi",
   "options": {
     "a": "45",
     "b": "55",
