@@ -1,21 +1,63 @@
 import { Box, Button } from "@mui/material";
 import React, { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Title } from "../static/tags";
 import Youtube from "react-youtube";
 import InputSelect from "../components/Cards/InputSelect";
+import { toastError, toastSuccess } from "../toast/toast";
 import { quizes } from "../static/data";
 
 const TrainingPage = () => {
     const { id } = useParams();
     const [step, setStep] = useState<1 | 2>(1);
+    const navigate = useNavigate();
     const wrongAnswers = JSON.parse(localStorage.getItem("WrongAnswers")!)[+id!];
+    const [selectedAnswers, setSelectedAnswers] = useState<string[]>(new Array(quizes.slice(0, 6).length).fill(''));
+    const [wrongAnswer, setWrongAnswer] = useState<boolean[]>(new Array(quizes.slice(0, 6).length).fill(false));
 
-
-    function youtube_parser(url: string){
+    function youtube_parser(url: string): string | undefined {
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
         var match = url.match(regExp);
-        return (match&&match[7].length==11)? match[7] : false;
+        return (match&&match[7].length==11)? match[7] : undefined;
+    }
+
+    const handleAnswerChange = (event: React.ChangeEvent<HTMLInputElement>, idx: number) => {
+        const updatedAnswers = [...selectedAnswers];
+        updatedAnswers[idx] = event.target.value;
+        setSelectedAnswers(updatedAnswers);
+    };
+
+
+    const handleSubmit = () => {
+        let flag = false;
+    
+        selectedAnswers.forEach((item, idx) => {
+          if(item.length === 0) {
+            toastError(`${idx + 1} not choosen!`);
+            flag = true;
+          }
+        });
+        if(flag) {
+          return;
+        }
+
+        const updatedAnswer = [...wrongAnswer];
+
+        quizes.slice(0, 6).forEach((item, idx) => {
+            if(item.correctAnswer !== selectedAnswers[idx]) {
+                updatedAnswer[idx] = true;
+                return;
+            }
+            updatedAnswer[idx] = false;
+        })
+
+        setWrongAnswer(updatedAnswer);
+        
+
+
+        // localStorage.setItem("", JSON.stringify(wrongAnswers));
+        // toastSuccess("Test succesfully submited!");
+        // navigate("/profile/training");
     }
 
     const opts = {
@@ -66,10 +108,17 @@ const TrainingPage = () => {
                                             key={correctAnswer}
                                             question={question}
                                             options={options}
+                                            value={selectedAnswers[idx]}
+                                            onChange={(event) => handleAnswerChange(event, idx)}
+                                            isWrong={wrongAnswer[idx]}
                                         />
                                     </Box>
                                 ))}
                             </Box>
+
+                            <Button className="!my-6" onClick={handleSubmit} variant="contained">
+                                Submit
+                            </Button>
                         </>
                     )}
                     {step === 2 && (
