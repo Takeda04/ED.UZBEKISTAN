@@ -56,7 +56,7 @@ const Sidebar = () => {
         ))}
 
           <Link className="flex py-4 px-8 hover:bg-blue-300 mt-auto" to={"/"}>
-            <LogoutIcon/> <span className="ml-2 font-medium">Logout</span>
+            <LogoutIcon/> <span className="ml-2 font-medium">Back</span>
           </Link>
       </Box>
     </Box>
