@@ -1,5 +1,4 @@
 import { Suspense, lazy, useContext, useEffect, useState } from "react";
-import { useStateContext } from "./context/ContextProvider";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./router";

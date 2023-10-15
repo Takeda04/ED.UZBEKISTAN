@@ -33,10 +33,6 @@ export const routes = [
     path: "/profile/*",
     Component: ProfileRoutes,
   },
-   {
-    path: "/profile/quizes",
-    Component: Quizes,
-  },
   {
     path: "/statistics",
     Component: Statistics,

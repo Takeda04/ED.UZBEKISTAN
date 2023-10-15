@@ -8,9 +8,11 @@ import { useLocation, useRoutes } from 'react-router-dom';
 const Layout: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
   const route = useLocation();
 
+  console.log(route)
+
   return (
     <Section >
-      {route.pathname !== '/profile' && (
+      {route.pathname.split('/')[1] !== 'profile' && (
         <Header/>
       )}
       <Section>{children}</Section>
