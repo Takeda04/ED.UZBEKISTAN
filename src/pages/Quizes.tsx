@@ -75,9 +75,9 @@ const Quizes = () => {
     <Container>
       {!isReady 
         ? 
-        <Box className="flex justify-center mt-16">
-          <Box component="p">
-            
+        <Box className="flex flex-col items-center mt-16">
+          <Box component="p" className="mb-4">
+            You cannot exit the page; on the third exit, the test will be closed
           </Box>
           <Button onClick={handleStart} variant="contained">Are you ready to start?</Button>
         </Box>
