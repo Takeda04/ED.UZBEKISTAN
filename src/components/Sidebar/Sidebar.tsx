@@ -2,9 +2,10 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
 
@@ -36,6 +37,11 @@ const Sidebar = () => {
       icon: <NotificationsNoneIcon/>,
       title: "Notifications",
       path: 'notification',
+    },
+    {
+      icon: <QuestionAnswerIcon/>,
+      title: "Conversation",
+      path: 'conversation',
     }
   ];
 
@@ -50,9 +56,9 @@ const Sidebar = () => {
 
       <Box className="flex flex-col mt-8 h-full ">
         {SidebarMenu.map((item) => (
-          <Link key={item.title} className="flex py-4 px-8 hover:bg-blue-300" to={item.path}>
+          <NavLink key={item.title}  className="flex py-4 px-8 hover:bg-blue-300" to={item.path}> 
             {item.icon} <span className="ml-2 font-medium">{item.title}</span>
-          </Link>
+          </NavLink>
         ))}
 
           <Link className="flex py-4 px-8 hover:bg-blue-300 mt-auto" to={"/"}>
