@@ -1,6 +1,6 @@
 import  { lazy } from "react";
 
-const Main = lazy(() => import("./pages/Main"));
+const Main = lazy(() => import("./pages/Home/Main"));
 const Classes = lazy(() => import("./pages/Classes"));
 const News = lazy(() => import("./pages/News"));
 const Profile = lazy(() => import("./pages/Profile"));

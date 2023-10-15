@@ -28,7 +28,7 @@ export const profileRouteList = [
         component: <TrainingPage/>,
     }, 
     {
-        path: "/profile/accuracy",
+        path: "/accuracy",
         index: false,
         component: <Accuracy/>,
     },

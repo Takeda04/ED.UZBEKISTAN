@@ -44,7 +44,7 @@ const ChartCard: ChartData = {
 const MyChart: React.FC = () => {
   useEffect(() => {
     const chart = new Chart(document.getElementById("doughnut-chart"), ChartCard);
-    chart.render();
+    // chart.render();;
   }, []);
 
   return <div id="doughnut-chart" />;
