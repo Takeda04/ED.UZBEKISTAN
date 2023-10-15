@@ -9,6 +9,14 @@ import { quizes } from "../static/data";
 const TrainingPage = () => {
     const { id } = useParams();
     const [step, setStep] = useState<1 | 2>(1);
+    const wrongAnswers = JSON.parse(localStorage.getItem("WrongAnswers")!)[+id!];
+
+
+    function youtube_parser(url: string){
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        var match = url.match(regExp);
+        return (match&&match[7].length==11)? match[7] : false;
+    }
 
     const opts = {
         height: '400',
@@ -21,7 +29,7 @@ const TrainingPage = () => {
 
     return (
         <Box className="mx-4 mt-10">
-            <Title className="bg-gray-700 text-white rounded-lg px-4 py-2">Training</Title>
+            <Title className="bg-gray-700 text-white rounded-lg px-4 py-2">{ wrongAnswers.question }</Title>
 
             <Box className="mt-8 bg-white rounded-lg shadow-lg p-4">
                 <Box className="border border-black rounded-lg flex">
@@ -45,11 +53,7 @@ const TrainingPage = () => {
                                 Subject
                             </Title>
                             <Box className="p">
-                                Your assignment is to successfully add, commit, and push to Git.
-
-                                Each Quest or Project at Qwasar has its own Git repository, and you will need to push all of your work in order to be able to submit each Quest.
-
-                                Not sure how to Git add commit push? Check out our step-by-step video guide/tutorial under the Additional Resources section of Quest00.
+                                {wrongAnswers.description}
                             </Box>
 
                             <Box className="mt-10">
@@ -74,13 +78,7 @@ const TrainingPage = () => {
                                 Videos
                             </Title>
                             <Youtube  
-                                videoId="o0HdBsxZjw0"
-                                className="!mb-4"
-                                opts={opts}
-                            />
-
-                            <Youtube  
-                                videoId="o0HdBsxZjw0"
+                                videoId={youtube_parser(wrongAnswers.video)}
                                 className="!mb-4"
                                 opts={opts}
                             />
